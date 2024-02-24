@@ -42,6 +42,7 @@ const TodoList: FS = () => {
   return (
     <div>
       <div className="todo">
+        <h2>Todo List</h2>
         <div className="todo__header">
           <div className="todo__inputs">
             <input
@@ -59,7 +60,9 @@ const TodoList: FS = () => {
               name="deadline"
             />
           </div>
-          <button onClick={addTask}>Add Task</button>
+          <button className="todo__btn" onClick={addTask}>
+            Add Task
+          </button>
         </div>
         <div className="todo__List">
           {todoList.map((task: ITask, key: number) => {
