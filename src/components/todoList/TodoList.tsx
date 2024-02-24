@@ -1,5 +1,5 @@
 // import React, { FS, ChangeEvent, useState } from "react";
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, FS, useState } from "react";
 import "./TodoList.scss";
 import { ITask } from "./interfaces";
 import TodoTask from "./TodoTask";
@@ -11,16 +11,15 @@ interface TodoList {
   value: string;
 }
 
-const TodoList: ChangeEvent = () => {
+const TodoList: FS = () => {
   const [task, setTask] = useState<string>("");
   const [deadline, setDeadline] = useState<number>(0);
   const [todoList, setTodoList] = useState<ITask[]>([]);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
-    if (event.target.value == "task") {
+    if (event.target.name === "task") {
       setTask(event.target.value);
     } else {
-      //   setTask(event.target.value);
       setDeadline(Number(event.target.value));
     }
   };
@@ -35,7 +34,7 @@ const TodoList: ChangeEvent = () => {
   const completeTask = (taskNameTodoDelete: string): void => {
     setTodoList(
       todoList.filter((task) => {
-        return task.taskName != taskNameTodoDelete;
+        return task.taskName !== taskNameTodoDelete;
       })
     );
   };
